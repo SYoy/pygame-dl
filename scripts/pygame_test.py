@@ -5,10 +5,11 @@ from src.flock import player, boid, game
 pygame.init()
 
 # set constants
-width = 800
-height = 600
-n_boids = 10
+width = 1600
+height = 900
+n_boids = 20
 max_velocity = 0.5
+v_player = 0.6
 
 # init
 screen = pygame.display.set_mode((width, height))
@@ -40,21 +41,21 @@ while running:
             if event.key == pygame.K_RCTRL:
                 p1.change_sprite()
             if event.key == pygame.K_UP:
-                p1.direction[1] += -0.2
+                p1.direction[1] += -v_player
             if event.key == pygame.K_DOWN:
-                p1.direction[1] += 0.2
+                p1.direction[1] += v_player
             if event.key == pygame.K_LEFT:
-                p1.direction[0] += -0.2
+                p1.direction[0] += -v_player
             if event.key == pygame.K_RIGHT:
-                p1.direction[0] += 0.2
+                p1.direction[0] += v_player
 
         # key pressed up
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
-                p1.direction[0] += 0.2
+                p1.direction[0] += v_player
             if event.key == pygame.K_RIGHT:
-                p1.direction[0] += -0.2
+                p1.direction[0] += -v_player
             if event.key == pygame.K_UP:
-                p1.direction[1] += 0.2
+                p1.direction[1] += v_player
             if event.key == pygame.K_DOWN:
-                p1.direction[1] += -0.2
+                p1.direction[1] += -v_player

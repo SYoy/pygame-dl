@@ -48,6 +48,24 @@ class boid():
             self.velocity = self.velocity / np.linalg.norm(self.velocity) * self.max_velocity
             self.acceleration = np.zeros(2)
 
+    # def align(self, boids): # see https://medium.com/better-programming/boids-simulating-birds-flock-behavior-in-python-9fff99375118
+    #
+    #     steering = np.zeros(2)
+    #     total = 0
+    #     avg_vec = np.zeros(2)
+    #
+    #     for boid in boids:
+    #         if np.linalg.norm(boid.position - self.position) < self.perception:
+    #             avg_vec += boid.velocity
+    #             total += 1
+    #     if total > 0:
+    #         avg_vec /= total
+    #         avg_vec = Vector(*avg_vec)
+    #         avg_vec = (avg_vec / np.linalg.norm(avg_vec)) * self.max_speed
+    #         steering = avg_vec - self.velocity
+    #
+    #     return steering
+
 
 # Game Client
 class game():
@@ -64,4 +82,5 @@ class game():
     def show_flock(self):
         for boid in self.flock:
             self.screen.blit(boid.sprite[0], ((boid.position[0] + self.width) % self.width, (boid.position[1] + self.height) % self.height))
+            # apply behaviour rules here
             boid.update()
